@@ -3,7 +3,6 @@ package ichoco.badprison;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import ichoco.badprison.commands.EnchantItemCMD;
 import ichoco.badprison.enchantments.CustomEnchants;
 import ichoco.badprison.listener.BlockBreak;
 import ichoco.badprison.listener.PlayerInteract;
@@ -21,8 +20,6 @@ public class BadPrisonMAIN extends JavaPlugin {
         saveDefaultConfig();
         
         CustomEnchants.register();
-
-        this.getCommand("benchant").setExecutor(new EnchantItemCMD());
 
         this.getServer().getPluginManager().registerEvents(new InventoryListener(), this); 
         this.getServer().getPluginManager().registerEvents(new PlayerInteract(), this); 

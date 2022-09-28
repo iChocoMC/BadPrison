@@ -30,7 +30,7 @@ public class PickaxeMenu implements Listener {
 
     public void slot(int slot, Material material, String name, List<String> lore, String description){
         List<String> buffered = new ArrayList<String>();
-        buffered.add(MessageUtil.translate(MessageUtil.translate(description)));
+        buffered.add(MessageUtil.translate(description));
         lore.forEach((message) -> buffered.add(MessageUtil.translate(message)));
 
         ItemStack item = new ItemBuilder(material)

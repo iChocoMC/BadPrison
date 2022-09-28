@@ -11,10 +11,10 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
-import ichoco.badprison.BadPrisonMAIN;
-import ichoco.badprison.enchantments.all.Blocks;
-import ichoco.badprison.enchantments.all.Others;
 import ichoco.badprison.utils.Methods;
+import ichoco.badprison.BadPrisonMAIN;
+import ichoco.badprison.enchantments.blocks.*;
+import ichoco.badprison.enchantments.others.*;
 
 import net.milkbowl.vault.economy.Economy;
 
@@ -33,16 +33,16 @@ public class BlockBreak implements Listener {
             fortune = item.getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS),
             amount = fortune;
         
-        if (item.getEnchantmentLevel(Blocks.getCuboid()) > percentage){
-            methods.cuboid(3, 6, block.getX(), block.getZ(), block.getY(), block.getWorld());
+        if (item.getEnchantmentLevel(Cuboid.getEnchantment()) > percentage){
+            Cuboid.method(block.getWorld(), block.getX(), block.getZ(), block.getY(), 3);
             amount+=343 * fortune;
         }
-        if (item.getEnchantmentLevel(Blocks.getLaser()) > percentage){
+        if (item.getEnchantmentLevel(Laser.getEnchantment()) > percentage){
             methods.laser(block.getY(), block.getWorld());
             amount+=10201 * fortune;
         }
-        if (item.getEnchantmentLevel(Others.getLucky()) > percentage){
-            amount*=methods.lucky(amount);
+        if (item.getEnchantmentLevel(Lucky.getEnchantment()) > percentage){
+            amount*=Lucky.method(amount);
         }
         economy.depositPlayer(player, amount);
     }

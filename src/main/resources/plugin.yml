@@ -3,6 +3,3 @@ description: Basic prisoncore
 author: iChocoMC_
 main: ichoco.badprison.BadPrisonMAIN
 version: 1.0
-
-commands:
-  benchant:
