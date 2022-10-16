@@ -32,9 +32,5 @@ public class Laser extends CustomEnchants {
     public static Enchantment getEnchantment(){
         return enchantment;
     }
-
-    public static void getMethod(World world, int Y){
-        method(world, Y);
-    }
 }
 

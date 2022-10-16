@@ -28,7 +28,6 @@ public class BadPrisonMAIN extends JavaPlugin {
     @Override
     public void onEnable() {
         createConfigs(this.getDataFolder());
-        System.out.print(getMessages());
         buildMenus();
         setupEconomy();
 
