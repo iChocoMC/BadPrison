@@ -18,7 +18,6 @@ public class CustomEnchants extends Enchantment {
     super(id);
     this.name = name;
     this.maxLvl = maxLvl;
-    super.registerEnchantment(enchantment);
   }
 
   public String getName() {
@@ -57,13 +56,13 @@ public class CustomEnchants extends Enchantment {
     List<String> lore = meta.getLore();
     String
       name = enchantment.getName(),
-      message = MessageUtil.Enchantment_Format;
+      enchantment_format = MessageUtil.Enchantment_Format;
     
-    message.replace("{enchant}", enchantment.getName());
+      enchantment_format.replace("{enchant}", enchantment.getName());
 
     for (String string : lore){
       if (string.contains(name)){
-        lore.set(line, message + level);
+        lore.set(line, enchantment_format + level);
         containsEnchantment = true;
         break;
       }
@@ -71,7 +70,7 @@ public class CustomEnchants extends Enchantment {
     }
 
     if (!containsEnchantment){
-      lore.add(message + level);
+      lore.add(enchantment_format + level);
     }
 
     meta.setLore(lore);

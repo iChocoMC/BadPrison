@@ -24,22 +24,25 @@ public class BlockBreak implements Listener {
     
     @EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
     public void event(BlockBreakEvent event) {
+        int percentage = random.nextInt(100);
+        if (percentage == 0){}
+        
         Block block = event.getBlock();
         Player player = event.getPlayer();
         ItemStack item = player.getItemInHand();
-        int percentage = random.nextInt(100),
-            fortune = item.getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS),
+        int fortune = item.getEnchantmentLevel(Enchantment.LOOT_BONUS_BLOCKS),
             amount = fortune;
         
-        if (item.getEnchantmentLevel(Cuboid.getEnchantment()) > percentage){
+        
+        if (item.getEnchantmentLevel(Cuboid.getEnchantment()) >= percentage){
             Cuboid.method(block.getWorld(), block.getX(), block.getZ(), block.getY(), 3);
             amount+=343 * fortune;
         }
-        if (item.getEnchantmentLevel(Laser.getEnchantment()) > percentage){
+        if (item.getEnchantmentLevel(Laser.getEnchantment()) >= percentage){
             Laser.method(block.getWorld(), block.getY());
             amount+=10201 * fortune;
         }
-        if (item.getEnchantmentLevel(Lucky.getEnchantment()) > percentage){
+        if (item.getEnchantmentLevel(Lucky.getEnchantment()) >= percentage){
             amount=Lucky.method(amount);
         }
         economy.depositPlayer(player, amount);
