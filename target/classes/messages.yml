@@ -1,6 +1,6 @@
 enchant-format: " &8| &f{enchant} &e:" # Example: &8| &fCuboid &e100
 
-custom-lore:
+enchantment-lore:
   - ""
   - "&8 | &7Clic izquierdo &7-> &b1 nivel"
   - "&8 | &7Clic derecho &7-> &b10 niveles"

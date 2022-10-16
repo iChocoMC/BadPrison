@@ -1,0 +1,21 @@
+enchant-format: " &8| &f{enchant} &e:" # Example: &8| &fCuboid &e100
+
+enchantment-lore:
+  - ""
+  - "&8 | &7Clic izquierdo &7-> &b1 nivel"
+  - "&8 | &7Clic derecho &7-> &b10 niveles"
+  - ""
+  - "&8 | &7Clic del medio &7-> &bTodo lo que puedas"
+  - ""
+
+detailed-explanation:
+  - "&fSi mejoras &e1 nivel&f a un encantamiento,"
+  - "&fTendras &61%&f más de probabilidad de que"
+  - "&fSe ejecute el encantamiento.&e Ejemplo:"
+  - ""
+  - "&7&lCUBO &8- Nivel 50: &fCrea un cuadrado 7x7 &7| &e50%"
+  - ""
+  - "&c&lLASER &8- Nivel 10: &fBorra toda una capa de la mina &7| &e10%"
+  - ""
+  - "&a&lSUERTE &8- Nivel 30: &fSegún el dinero ganado, se multiplicara:"
+  - "   &71 millon: &64x&8 - &7500k: &63x &8- &7Otro:&6 2x &7| &e30%"

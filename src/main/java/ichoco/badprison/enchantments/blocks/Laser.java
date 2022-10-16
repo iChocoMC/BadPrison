@@ -1,5 +1,6 @@
 package ichoco.badprison.enchantments.blocks;
 
+
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.block.Block;
@@ -11,9 +12,8 @@ public class Laser extends CustomEnchants {
 
     private static Enchantment enchantment = new Laser();
 
-    public Laser() {
-        super(103, "Laser", 5);
-        listEnchantments.add(enchantment);
+    private Laser() {
+        super(103, "Laser", 5, enchantment);
     }
 
     public static void method(World world, int Y) {
@@ -31,6 +31,10 @@ public class Laser extends CustomEnchants {
     
     public static Enchantment getEnchantment(){
         return enchantment;
+    }
+
+    public static void getMethod(World world, int Y){
+        method(world, Y);
     }
 }
 

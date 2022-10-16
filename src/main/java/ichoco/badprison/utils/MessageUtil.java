@@ -1,19 +1,20 @@
 package ichoco.badprison.utils;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.bukkit.configuration.file.FileConfiguration;
 
-import org.bukkit.ChatColor;
+import ichoco.badprison.BadPrisonMAIN;
 
 public class MessageUtil {
-    
-    public static String translate(String lore){
-        return ChatColor.translateAlternateColorCodes('&', lore);
-    }
+    public static FileConfiguration config = BadPrisonMAIN.getInstance().getMessages();
 
-    public static List<String> translateStrings(List<String> messages) {
-        List<String> buffered = new ArrayList<String>();
-        messages.forEach((message) -> buffered.add(MessageUtil.translate(message)));
-        return buffered;
+    public static String Enchantment_Format = config.getString("enchantment-format".replace('&', '§'));
+    
+    //Get the stringlist and transform to string using for loop
+    public static String transformToString(String section){
+        String string = "";
+        for(String line : config.getStringList(section)){
+            string += line + "\n";
+        }
+        return string.replace('&', '§');
     }
 }

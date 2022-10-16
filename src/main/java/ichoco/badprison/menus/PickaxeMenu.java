@@ -5,43 +5,55 @@ import java.util.List;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
-import org.bukkit.event.Listener;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
-import ichoco.badprison.BadPrisonMAIN;
 import ichoco.badprison.utils.MessageUtil;
 
-public class PickaxeMenu implements Listener {
+public class PickaxeMenu {
 
-    private static Inventory INV;
-    private List<String> lore = BadPrisonMAIN.getInstance().getConfig().getStringList("custom-lore");
-    private List<String> lore_detailed = BadPrisonMAIN.getInstance().getConfig().getStringList("detailed-explanation");
-    
+    private Inventory INV;
+
     public PickaxeMenu() {
-        INV = Bukkit.createInventory(null, 27, "1 Nivel = 1% | Encanta tu pico");
+
+        String Enchantment_Lore = MessageUtil.transformToString("enchantment-lore");
+        String Detailed_Lore = MessageUtil.transformToString("detailed-explanation");
         
-        slot(3, Material.EMERALD_BLOCK, "&a&lSUERTE", lore, "&fSegún el dinero ganado, se multiplicara");
-        slot(4, Material.STONE, "&7&lCUBO", lore, "&fCrea un cuadrado &e7x7");
-        slot(5, Material.REDSTONE, "&c&lLASER", lore, "&fQuita una &6capa entera&f de la mina");
+        INV = Bukkit.createInventory(
+            null,
+            9 * 3 , // 9 = rows, 3 = size
+            "1 Nivel = 1% | Encanta tu pico"
+        );
+
+        slot(26, Material.BOOK, "§9§lExplicación detallada",
+            Detailed_Lore, "");
+
+        //Enchantments
+        slot(3, Material.EMERALD_BLOCK, "§a§lSUERTE",
+            Enchantment_Lore, "§fSegún el dinero ganado, se multiplicara");
         
-        slot(26, Material.BOOK, "&9&lExplicación detallada", lore_detailed, "");
+        slot(4, Material.STONE, "§7§lCUBO",
+            Enchantment_Lore, "§fCrea un cuadrado §e7x7");
+        
+        slot(5, Material.REDSTONE, "§c§lLASER",
+            Enchantment_Lore, "§fQuita una §6capa entera§f de la mina");
     }
 
-    public void slot(int slot, Material material, String name, List<String> lore, String description){
+    private void slot(int slot, Material material, String name, String lore, String description){
         List<String> buffered = new ArrayList<String>();
-        buffered.add(MessageUtil.translate(description));
-        lore.forEach((message) -> buffered.add(MessageUtil.translate(message)));
+        buffered.add(lore);
 
-        ItemStack item = new ItemBuilder(material)
-            .setName(MessageUtil.translate(name))
-            .setLore(buffered)
-            .toItemStack();
+        ItemStack item = new ItemStack(material);
+        ItemMeta meta = item.getItemMeta();
+        meta.setDisplayName(name);
+        meta.setLore(buffered);
+        item.setItemMeta(meta);
 
         INV.setItem(slot, item);
     }
 
-    public static Inventory getInventory(){
+    public Inventory getInventory(){
         return INV;
     }
 }

@@ -8,19 +8,18 @@ public class Lucky extends CustomEnchants {
 
     private static Enchantment enchantment = new Lucky();
 
-    public Lucky() {
-        super(104, "Lucky", 30);
-        listEnchantments.add(enchantment);
+    private Lucky() {
+        super(104, "Lucky", 30, enchantment);
     }
 
-    public static byte method(int amount) {
+    public static int method(int amount) {
         if (amount >= 1000000){
-            return 4; 
+            return 4*amount; 
         }
         if (amount >= 500000){
-            return 3; 
+            return 3*amount; 
         }
-        return 2;
+        return 2*amount;
     }
     
     public static Enchantment getEnchantment(){

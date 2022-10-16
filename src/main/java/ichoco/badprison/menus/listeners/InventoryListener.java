@@ -6,18 +6,21 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.ClickType;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-import ichoco.badprison.menus.PickaxeMenu;
+import ichoco.badprison.BadPrisonMAIN;
 import ichoco.badprison.enchantments.CustomEnchants;
 import ichoco.badprison.enchantments.blocks.*;
 import ichoco.badprison.enchantments.others.*;
 
 public class InventoryListener implements Listener {
   
+  private Inventory PickaxeMenu = BadPrisonMAIN.getPickaxeInventory();
+
   @EventHandler
   public void click(InventoryClickEvent event) {
-    if (event.getInventory().equals(PickaxeMenu.getInventory())){
+    if (event.getInventory().equals(PickaxeMenu)){
       switch (event.getCurrentItem().getType()) {
         case STONE:
           enchant(event.getClick(), Cuboid.getEnchantment(), (Player) event.getWhoClicked());
